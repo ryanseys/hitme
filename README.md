@@ -2,5 +2,4 @@ hitme
 =====
 
 hitme is a redis-backed, hit-counter designed for elegance.
-
-<img src="http://ryanseys-hitme.nodejitsu.com/images/img.svg" />
+[![Test image](http://ryanseys-hitme.nodejitsu.com/images/img.svg)](http://ryanseys-hitme.nodejitsu.com/images/img.svg)
