@@ -2,7 +2,5 @@ hitme
 =====
 
 hitme is a redis-backed, hit-counter designed for elegance.
-<script>
-alert("hello");
-</script>
-[![Test image](https://ryanseys-hitme.jit.su/images/img.svg)](https://ryanseys-hitme.jit.su/images/img.svg)
+
+[![counter](https://hitme.nodejitsu.com/ryanseys/hitme.svg)](https://hitme.nodejitsu.com/ryanseys/hitme.svg)
