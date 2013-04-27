@@ -3,7 +3,7 @@ var express = require('express'),
     datastore = {},
     ips = {};
 
-app.configure(function(){
+app.configure(function() {
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.bodyParser());
@@ -40,5 +40,10 @@ app.get('/:username/:repo.svg', function(req, res) {
   res.render('counter', { value : count });
 });
 
+// 404 all other requests
+app.get('*', function(req, res) {
+  res.send(404);
+});
+
 app.listen(4000);
-console.log('hitme up on port 4000!')
+console.log('hitme up on port 4000!');
