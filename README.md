@@ -28,4 +28,4 @@ Use **https**, or else GitHub will proxy/cache the file and essentially break fu
 
 ## License
 
-See [LICENSE.md](https://github.com/ryanseys/hitme/LICENSE.md)
+See [LICENSE.md](https://github.com/ryanseys/hitme/blob/master/LICENSE.md)

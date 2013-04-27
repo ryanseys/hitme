@@ -16,10 +16,16 @@ app.get('/', function(req, res) {
 });
 
 app.get('/:username/:repo.svg', function(req, res) {
-  var key = req.params.username+"/"+req.params.repo;
-  datastore[key] = datastore[key] ? datastore[key] += 1 : 1;
+  var username  = req.params.username,
+      repo      = req.params.repo,
+      key       = username + '/' + repo;
+
+  if(req.headers.referer == ('https://github.com/' + username + '/' + repo + '/')) {
+    datastore[key] = datastore[key] ? datastore[key] += 1 : 1; //increment value in db
+  }
+  var count = datastore[key]; //get from database
   res.header('Content-Type', 'image/svg+xml');
-  res.render('counter', { value : datastore[key] });
+  res.render('counter', { value : count });
 });
 
 app.listen(4000);
