@@ -23,7 +23,7 @@ app.get('/:username/:repo.svg', function(req, res) {
   if(req.headers.referer == ('https://github.com/' + username + '/' + repo + '/')) {
     datastore[key] = datastore[key] ? datastore[key] += 1 : 1; //increment value in db
   }
-  var count = datastore[key]; //get from database
+  var count = datastore[key] || 0; //get from database
   res.header('Content-Type', 'image/svg+xml');
   res.render('counter', { value : count });
 });
