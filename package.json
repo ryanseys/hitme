@@ -8,7 +8,8 @@
   "dependencies": {
     "express": "3.0.5",
     "jade": "0.30.0",
-    "redis": "0.8.3"
+    "redis": "0.8.3",
+    "redis-url": "0.1.0"
   },
   "subdomain": "hitme",
   "engines": {
