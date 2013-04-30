@@ -1,7 +1,10 @@
 var express = require('express'),
     app = express(),
     datastore = {},
-    ips = {};
+    ips = {},
+    redis = require("redis"),
+    client = redis.createClient(),
+    DEBUG = false;
 
 app.configure(function() {
   app.set('views', __dirname + '/views');
@@ -23,21 +26,40 @@ function getIP(req) {
   return ip;
 };
 
+function renderViewCount(res, key) {
+  client.get(key, function(err, reply) {
+    if(!err && reply != null) {
+      res.render('counter', { value : reply });
+    }
+    else {
+      res.render('counter', { value : 0 }); //error occurred
+    }
+  });
+};
+
 app.get('/:username/:repo.svg', function(req, res) {
   var username  = req.params.username,
       repo      = req.params.repo,
       key       = username + '/' + repo,
       ip        = getIP(req);
 
-  if((req.headers.referer == 'https://github.com/' + username + '/' + repo + '/') && (!ips[ip])) {
-    datastore[key] = datastore[key] ? datastore[key] += 1 : 1; //increment value in db
-    ips[ip] = true; // store ip in db
-  }
-
-  var count = datastore[key] || 0; //get count from database
   res.header('Content-Type', 'image/svg+xml');
   res.header('Cache-Control','public, max-age=31557600'); // make sure this is 1 day
-  res.render('counter', { value : count });
+  if(req.headers.referer == 'https://github.com/' + username + '/' + repo + '/') {
+    client.hexists(key+'ips', ip, function(err, reply) {
+      if(reply == 0) {
+        client.hset(key+'ips', ip, 1, function(err, reply) {
+          client.incr(key, renderViewCount(res, key));
+        });
+      }
+      else {
+        renderViewCount(res, key);
+      }
+    });
+  }
+  else {
+    renderViewCount(res, key);
+  }
 });
 
 // 404 all other requests
