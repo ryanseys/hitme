@@ -67,5 +67,7 @@ app.get('*', function(req, res) {
   res.send(404);
 });
 
-app.listen(4000);
-console.log('hitme up on port 4000!');
+var port = process.env.PORT || 4000;
+
+app.listen(port);
+console.log('hitme up on port ' + port + '!');
