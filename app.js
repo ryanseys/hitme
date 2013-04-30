@@ -3,7 +3,7 @@ var express = require('express'),
     datastore = {},
     ips = {},
     redis = require("redis"),
-    client = redis.createClient(19029, "redis-19029.us-east-1-1.1.ec2.garantiadata.com").auth("xX2mayBhlpowekNh", function() {});,
+    client = redis.createClient(19029, "redis-19029.us-east-1-1.1.ec2.garantiadata.com").auth("xX2mayBhlpowekNh", function() {}),
     DEBUG = false;
 
 
