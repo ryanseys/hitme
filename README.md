@@ -6,7 +6,7 @@ HitMe is a GitHub-repo hit-counter designed for simplicity and elegance.
 
 Embed the following into your README.md in your GitHub repo:
 ```
-![HitMe Counter](https://hitme.nodejitsu.com/<username>/<reponame>.svg)
+![HitMe Counter](https://hit.herokuapp.com/<username>/<reponame>.svg)
 ```
 where:
 `<username>` is your GitHub username
@@ -17,10 +17,10 @@ and
 
 Code embedded below:
 ```
-![HitMe Counter](https://hitme.nodejitsu.com/ryanseys/hitme.svg)
+![HitMe Counter](https://hit.herokuapp.com/ryanseys/hitme.svg)
 ```
 
-![HitMe Counter](https://hitme.nodejitsu.com/ryanseys/hitme.svg)
+![HitMe Counter](https://hit.herokuapp.com/ryanseys/hitme.svg)
 
 ## Notes
 
